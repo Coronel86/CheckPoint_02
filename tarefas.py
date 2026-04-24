@@ -37,7 +37,6 @@ def listar_tarefas():
 
 def concluir_tarefa(indice_usuario):
     try:
-        # 2. A Atualização: converte e acessa o índice
         indice = int(indice_usuario) - 1
         lista_tarefas[indice]["concluida"] = True
         print(f"\n Tarefa '{lista_tarefas[indice]['descricao']}' marcada como concluída!")
