@@ -1,4 +1,20 @@
+import json
+
 lista_tarefas = []
+
+def salvar_dados():
+    with open("dados.json", "w") as arquivo:
+        json.dump(lista_tarefas, arquivo, indent=4, ensure_ascii=False)
+        print("\nSalvo no HD com sucesso!")
+
+def carregar_dados():
+    global lista_tarefas
+    try:
+        with open("dados.json", "r") as arquivo:
+            lista_tarefas = json.load(arquivo)
+    except (FileNotFoundError, json.JSONDecodeError):
+        lista_tarefas = []
+        print("\nCarregado no HD com sucesso!")
 
 def adicionar_tarefa(descricao):
 

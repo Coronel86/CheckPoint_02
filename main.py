@@ -1,8 +1,10 @@
 import os
 import time
-from tarefas import adicionar_tarefa, listar_tarefas, apagar_tarefa, concluir_tarefa
+from tarefas import adicionar_tarefa, listar_tarefas, apagar_tarefa, concluir_tarefa, carregar_dados, salvar_dados
 
 TEMPO = 5 
+
+carregar_dados()
 
 while True:
     
@@ -20,31 +22,33 @@ while True:
 
     match opcao:
         case "1":
-            desc = input("Descrição da tarefa: ")
+            desc = input("\nDescrição da tarefa: ")
             adicionar_tarefa(desc)
-            time.sleep(5)
+            salvar_dados()
+            time.sleep(TEMPO)
         
         case "2":
             listar_tarefas()
-            time.sleep(5)
+            time.sleep(8)
         
         case "3":
             listar_tarefas() 
             idx = input("\nDigite o número da tarefa para concluir: ")
             concluir_tarefa(idx)
-            time.sleep(5)
+            salvar_dados()
+            time.sleep(TEMPO)
             
         case "4":
             listar_tarefas()
             idx = input("\nDigite o número da tarefa para apagar: ")
             apagar_tarefa(idx)
-            time.sleep(5)
+            time.sleep(TEMPO)
             
         case "5":
-            print("Saindo... Obrigado por utilizar nosso sistema!")
-            time.sleep(5)
+            print("\nSaindo... Obrigado por utilizar nosso sistema!")
+            time.sleep(TEMPO)
             break
             
         case _:
             print("Opção inválida!")
-            time.sleep(5)
+            time.sleep(TEMPO)
